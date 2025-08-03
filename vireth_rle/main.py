@@ -1,10 +1,15 @@
 from vireth_rle.models.base_model import BaseModel
-
+from vireth_rle.utils.plugin_utils import load_plugins  # <-- Plugin loader import
 
 def main():
     print("Initializing Vireth RLE Core...\n")
     model = BaseModel(name="VirethCore", version="0.1")
     model.describe()
+
+    # 🔌 Load plugins
+    print("\nLoading plugins...")
+    plugin_count = load_plugins(model)
+    print(f"{plugin_count} plugin(s) loaded.\n")
 
     # Simulate input loop
     inputs = [
@@ -42,6 +47,11 @@ def main():
     model.reset_reasoning_chain()
     print("\nAfter reasoning reset:")
     print(model.get_reasoning_chain())
+
+    # Run any added plugin methods (example from mock_learning_plugin)
+    if hasattr(model, "show_mock_growth"):
+        print("\nRunning plugin-extended capability:")
+        model.show_mock_growth()
 
 if __name__ == "__main__":
     main()
