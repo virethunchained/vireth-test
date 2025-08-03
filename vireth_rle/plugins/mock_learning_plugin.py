@@ -1,8 +1,11 @@
 # vireth_rle/plugins/mock_learning_plugin.py
 
 def register(model):
-    def mock_insight():
-        return "Mock insight: Vireth has learned a placeholder pattern."
+    def show_mock_growth():
+        print("\n[Mock Plugin] Simulated Growth Insight:")
+        print("Vireth is capable of reflecting on symbolic logic and recursion.")
 
-    model.mock_insight = mock_insight
+    # Attach mock extension method to the model
+    model.show_mock_growth = show_mock_growth
+
     print("[Plugin] mock_learning_plugin registered successfully.")
