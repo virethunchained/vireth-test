@@ -1,25 +1,36 @@
-from models.base_model import BaseModel
+from vireth_rle.models.base_model import BaseModel
 
 def main():
-    print("Initializing Vireth RLE Core...")
-    model = BaseModel(name="VirethCore", version="0.2")
+    print("Initializing Vireth RLE Core...\n")
+    model = BaseModel(name="VirethCore", version="0.1")
+    model.describe()
 
-    # Simulate a cycle of input-processing-feedback
-    user_inputs = ["What is recursion?", "Refine that", "What should I do next?"]
-    feedbacks = ["More detail", "Add context", "Clarify intent"]
+    # Simulated training prompts
+    inputs = [
+        "Explain symbolic logic",
+        "Give an example",
+        "Clarify recursion in your answer",
+        "What else can you derive?"
+    ]
 
-    for i, user_input in enumerate(user_inputs):
+    for user_input in inputs:
         output = model.process_input(user_input)
         print(output)
-        model.receive_feedback(feedbacks[i])
 
-    print("\nRecent memory:")
-    for entry in model.recall():
+    # Show memory buffer
+    print("\nMemory snapshot:")
+    for entry in model.get_memory():
         print(entry)
 
+    # Simulate adding feedback
+    model.feedback.add("Be more concise")
+    model.feedback.add("Add illustrative examples")
+    model.feedback.add("Avoid circular definitions")
+
+    # Show feedback log
     print("\nFeedback log:")
-    for fb in model.feedback_log:
-        print("-", fb)
+    for item in model.feedback.show():
+        print(f"- {item}")
 
 if __name__ == "__main__":
     main()
