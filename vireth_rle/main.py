@@ -1,11 +1,12 @@
 from vireth_rle.models.base_model import BaseModel
 
+
 def main():
     print("Initializing Vireth RLE Core...\n")
     model = BaseModel(name="VirethCore", version="0.1")
     model.describe()
 
-    # Simulated training prompts
+    # Simulate input loop
     inputs = [
         "Explain symbolic logic",
         "Give an example",
@@ -17,20 +18,30 @@ def main():
         output = model.process_input(user_input)
         print(output)
 
-    # Show memory buffer
+    # Display memory
     print("\nMemory snapshot:")
     for entry in model.get_memory():
         print(entry)
 
-    # Simulate adding feedback
-    model.feedback.add("Be more concise")
-    model.feedback.add("Add illustrative examples")
-    model.feedback.add("Avoid circular definitions")
+    # Add feedback examples
+    model.add_feedback("Be more concise")
+    model.add_feedback("Add illustrative examples")
+    model.add_feedback("Avoid circular definitions")
 
-    # Show feedback log
+    # Display feedback
     print("\nFeedback log:")
-    for item in model.feedback.show():
-        print(f"- {item}")
+    for note in model.get_feedback():
+        print(f"- {note}")
+
+    # Show reasoning chain
+    print("\nReasoning Chain:")
+    for step in model.get_reasoning_chain():
+        print(f"- {step}")
+
+    # Reset reasoning chain
+    model.reset_reasoning_chain()
+    print("\nAfter reasoning reset:")
+    print(model.get_reasoning_chain())
 
 if __name__ == "__main__":
     main()
