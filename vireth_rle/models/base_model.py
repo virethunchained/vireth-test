@@ -1,3 +1,5 @@
+import os
+import json
 from vireth_rle.utils.memory_utils import MemoryBuffer
 from vireth_rle.utils.feedback_utils import FeedbackLog
 from vireth_rle.utils.recursive_utils import RecursiveReasoner, RecursiveChainTracker
@@ -14,11 +16,26 @@ class BaseModel:
         self.chain_tracker = RecursiveChainTracker()
         self.learning = LearningHook()
         self.insight_log = InsightLog()
-        self.preprocessors = []
         self.learned_insights = []
-        self.last_tagged_topic = None  # ✅ Stores last topic
-        self.last_inferred_emotion = None  # ✅ Stores last inferred emotion
-        self.last_detected_patterns = []   # ✅ Stores last detected patterns
+        self.preprocessors = []
+        self.last_tagged_topic = None
+        self.last_inferred_emotion = None
+        self.last_detected_patterns = []
+
+        self.load_persistent_insights()  # ✅ Load insights from disk
+
+    def load_persistent_insights(self):
+        path = "vireth_rle/memory/insights.json"
+        if os.path.exists(path):
+            try:
+                with open(path, "r") as f:
+                    persisted = json.load(f)
+                    self.learned_insights = persisted
+                    for entry in persisted:
+                        self.insight_log.add(entry)
+                print(f"[Memory] Loaded {len(persisted)} persisted insights from disk.")
+            except Exception as e:
+                print(f"[Memory] Failed to load persisted insights: {e}")
 
     def describe(self):
         print(f"Model Name: {self.name}")
@@ -28,40 +45,25 @@ class BaseModel:
         self.preprocessors.append(fn)
 
     def process_input(self, input_text):
-        # ✅ Apply preprocessing hooks
         for fn in self.preprocessors:
             input_text = fn(input_text)
 
-        # Core output generation
         output = f"Processed input: {input_text}"
-
-        # Recursive logic tracking
         self.chain_tracker.analyze("Interpreting input")
         self.chain_tracker.reflect("Evaluating prior outputs")
         self.chain_tracker.iterate("Refining based on context")
-
-        # Recursive refinement
         refined_output = self.reasoner.refine(output)
 
-        # ✅ Tag topic if available
         if hasattr(self, "tag_topic"):
             self.last_tagged_topic = self.tag_topic(input_text)
-
-        # ✅ Infer emotion if available
         if hasattr(self, "infer_emotion"):
             self.last_inferred_emotion = self.infer_emotion(input_text)
-
-        # ✅ Map patterns if available
         if hasattr(self, "map_patterns"):
             self.last_detected_patterns = self.map_patterns()
 
-        # Store in memory
         self.memory.add(input_text, refined_output)
-
-        # Observe for learning
         self.learning.observe(input_text, refined_output)
 
-        # ✅ Log structured insight
         log_insight(
             self,
             refined_output,
