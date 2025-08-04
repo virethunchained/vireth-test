@@ -1,4 +1,5 @@
 from vireth_rle.plugins.plugin_base import VirethPlugin
+from vireth_rle.utils.color_utils import color_print  # ✅ Shared utility import
 
 class EmotionInferencePlugin(VirethPlugin):
     def register(self, model):
@@ -13,25 +14,14 @@ class EmotionInferencePlugin(VirethPlugin):
             else:
                 emotion = "neutral"
 
-            # ✅ Store the last inferred emotion for insight logging
             model.last_inferred_emotion = emotion
 
-            # ✅ Color-coded terminal output
-            color_map = {
-                "joy": "\033[93m",      # Yellow
-                "anger": "\033[91m",    # Red
-                "sadness": "\033[94m",  # Blue
-                "neutral": "\033[90m",  # Gray
-            }
-            reset = "\033[0m"
-            color = color_map.get(emotion, "\033[0m")
-
-            print(f"{color}[EmotionInference] Detected emotion: {emotion}{reset}")
+            # ✅ Centralized color output
+            color_print(f"[EmotionInference] Detected emotion: {emotion}", tag="emotion", subtype=emotion)
             return emotion
 
-        # Attach the function to the model
         model.infer_emotion = infer_emotion
-        print(f"[Plugin] {self.name()} registered successfully.")
+        color_print(f"[Plugin] {self.name()} registered successfully.", tag="plugin", subtype="emotion")
 
     def description(self):
         return "Infers basic emotions from input text."

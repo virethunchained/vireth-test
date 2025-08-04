@@ -1,6 +1,7 @@
 # vireth_rle/plugins/pattern_mapper_plugin.py
 
 from vireth_rle.plugins.plugin_base import VirethPlugin  # ✅ Absolute import
+from vireth_rle.utils.display_utils import color_print   # ✅ Shared color utility
 
 class PatternMapperPlugin(VirethPlugin):
     def register(self, model):
@@ -16,15 +17,12 @@ class PatternMapperPlugin(VirethPlugin):
                     patterns.append("clarification")
             detected = list(set(patterns))
 
-            # ✅ Color-coded output
-            color = "\033[92m"  # Light green
-            reset = "\033[0m"
-            print(f"{color}[PatternMapper] Detected patterns: {detected}{reset}")
-
+            # ✅ Use shared color print
+            color_print(f"[PatternMapper] Detected patterns: {detected}", color="green")
             return detected
 
         model.map_patterns = lambda: map_patterns(model.get_memory())
-        print(f"[Plugin] {self.name()} registered successfully.")
+        color_print(f"[Plugin] {self.name()} registered successfully.", color="green")
 
     def description(self):
         return "Maps patterns from memory inputs."

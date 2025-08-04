@@ -1,6 +1,7 @@
 # vireth_rle/plugins/topic_tagger_plugin.py
 
 from vireth_rle.plugins.plugin_base import VirethPlugin
+from vireth_rle.utils.display_utils import color_print  # ✅ Shared utility
 
 class TopicTaggerPlugin(VirethPlugin):
     def register(self, model):
@@ -12,22 +13,20 @@ class TopicTaggerPlugin(VirethPlugin):
                 topic = "Recursion"
             else:
                 topic = "General"
+
             model.last_tagged_topic = topic  # ✅ Store for later access
 
-            # ✅ Color-coded topic output
+            # ✅ Use shared color print
             color_map = {
-                "Logic": "\033[95m",      # Magenta
-                "Recursion": "\033[96m",  # Cyan
-                "General": "\033[90m",    # Gray
+                "Logic": "magenta",
+                "Recursion": "cyan",
+                "General": "gray"
             }
-            reset = "\033[0m"
-            color = color_map.get(topic, "\033[0m")
-
-            print(f"{color}[TopicTagger] Tagged topic: {topic}{reset}")
+            color_print(f"[TopicTagger] Tagged topic: {topic}", color=color_map.get(topic, "gray"))
             return topic
 
         model.tag_topic = tag_topic
-        print(f"[Plugin] {self.name()} registered successfully.")
+        color_print(f"[Plugin] {self.name()} registered successfully.", color="magenta")
 
     def description(self):
         return "Tags dominant topic in input."

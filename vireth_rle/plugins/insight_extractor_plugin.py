@@ -1,5 +1,6 @@
 from vireth_rle.plugins.plugin_base import VirethPlugin
 from vireth_rle.utils.insight_utils import log_insight
+from vireth_rle.utils.display_utils import color_print  # ✅ Shared color utility
 
 class InsightExtractorPlugin(VirethPlugin):
     def register(self, model):
@@ -11,11 +12,11 @@ class InsightExtractorPlugin(VirethPlugin):
             ]
             for insight in insights:
                 log_insight(model, insight)
-                print(f"\033[96m[InsightExtractor] Logged refined insight: {insight}\033[0m")
+                color_print(f"[InsightExtractor] Logged refined insight: {insight}", color="cyan")
             return insights
 
         model.extract_insights = extract_insights
-        print(f"\033[96m[Plugin] {self.name()} registered successfully.\033[0m")
+        color_print(f"[Plugin] {self.name()} registered successfully.", color="cyan")
 
     def description(self):
         return "Extracts key insights from memory and logs them."
