@@ -1,5 +1,6 @@
 from datetime import datetime
 from vireth_rle.utils.persistent_memory import load_insights_from_disk, append_insight_to_disk
+from vireth_rle.utils.display_utils import color_print  # ✅ Color utility
 
 class InsightLog:
     def __init__(self):
@@ -15,7 +16,13 @@ class InsightLog:
         """
         self.entries.append(structured_insight)
         append_insight_to_disk(structured_insight)
-        print(f"[InsightLog] Logged structured insight: {structured_insight['text']}")
+
+        # ✅ Color-coded log output
+        color_print(
+            f"[InsightLog] Logged structured insight: {structured_insight['text']}",
+            tag="log",
+            subtype="insight"
+        )
 
     def get_all(self):
         """
@@ -47,4 +54,3 @@ def log_insight(model, text, topic=None, emotion=None, patterns=None, reasoning=
 
     model.insight_log.add(structured_entry)
     model.learned_insights.append(structured_entry)
-

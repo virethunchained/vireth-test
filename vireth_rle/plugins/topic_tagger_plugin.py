@@ -1,7 +1,7 @@
 # vireth_rle/plugins/topic_tagger_plugin.py
 
 from vireth_rle.plugins.plugin_base import VirethPlugin
-from vireth_rle.utils.display_utils import color_print  # ✅ Shared utility
+from vireth_rle.utils.color_utils import color_print  # ✅ Fixed import
 
 class TopicTaggerPlugin(VirethPlugin):
     def register(self, model):
@@ -26,7 +26,7 @@ class TopicTaggerPlugin(VirethPlugin):
             return topic
 
         model.tag_topic = tag_topic
-        color_print(f"[Plugin] {self.name()} registered successfully.", color="magenta")
+        color_print(f"[Plugin] {self.name()} registered successfully.", color="cyan")
 
     def description(self):
         return "Tags dominant topic in input."

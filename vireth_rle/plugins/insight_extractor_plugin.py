@@ -1,6 +1,6 @@
 from vireth_rle.plugins.plugin_base import VirethPlugin
 from vireth_rle.utils.insight_utils import log_insight
-from vireth_rle.utils.display_utils import color_print  # ✅ Shared color utility
+from vireth_rle.utils.color_utils import color_print  # ✅ Corrected shared color utility
 
 class InsightExtractorPlugin(VirethPlugin):
     def register(self, model):
