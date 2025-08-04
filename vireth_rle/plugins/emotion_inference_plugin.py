@@ -1,13 +1,31 @@
-# vireth_rle/plugins/emotion_inference_plugin.py
+from vireth_rle.plugins.plugin_base import VirethPlugin
 
-from vireth_rle.plugins import plugin_base
-from vireth_rle.plugins.emotion_utils import infer_emotion
+class EmotionInferencePlugin(VirethPlugin):
+    def register(self, model):
+        def infer_emotion(input_text):
+            lowered = input_text.lower()
+            if any(word in lowered for word in ["happy", "joy", "excited", "love"]):
+                emotion = "joy"
+            elif any(word in lowered for word in ["angry", "frustrated", "annoyed", "hate"]):
+                emotion = "anger"
+            elif any(word in lowered for word in ["sad", "upset", "depressed"]):
+                emotion = "sadness"
+            else:
+                emotion = "neutral"
+
+            # ✅ Store the last inferred emotion for insight logging
+            model.last_inferred_emotion = emotion
+
+            print(f"[EmotionInference] Detected emotion: {emotion}")
+            return emotion
+
+        # Attach the function to the model
+        model.infer_emotion = infer_emotion
+        print(f"[Plugin] {self.name()} registered successfully.")
+
+    def description(self):
+        return "Infers basic emotions from input text."
 
 def register(model):
-    def emotion_hook(text):
-        emotion = infer_emotion(text)
-        print(f"[EmotionInference] Detected emotion: {emotion}")
-        return text  # No modification for now; could adapt if needed
-
-    model.register_preprocessor(emotion_hook)
-    print("[Plugin] EmotionInferencePlugin registered successfully.")
+    plugin = EmotionInferencePlugin()
+    plugin.register(model)

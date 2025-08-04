@@ -1,15 +1,22 @@
+# vireth_rle/plugins/pattern_mapper_plugin.py
+
 from vireth_rle.plugins.plugin_base import VirethPlugin  # ✅ Absolute import
 
 class PatternMapperPlugin(VirethPlugin):
     def register(self, model):
         def map_patterns(memory):
+            if not memory:
+                return []
             patterns = []
             for entry in memory:
-                if "example" in entry['input'].lower():
+                input_text = entry.get('input', '').lower()
+                if "example" in input_text:
                     patterns.append("example-driven")
-                if "clarify" in entry['input'].lower():
+                if "clarify" in input_text:
                     patterns.append("clarification")
-            return list(set(patterns))
+            detected = list(set(patterns))
+            print(f"[PatternMapper] Detected patterns: {detected}")
+            return detected
 
         model.map_patterns = lambda: map_patterns(model.get_memory())
         print(f"[Plugin] {self.name()} registered successfully.")
