@@ -3,7 +3,9 @@ from vireth_rle.utils.persistent_memory import load_insights_from_disk, append_i
 
 class InsightLog:
     def __init__(self):
-        # ✅ Load persistent insights at startup
+        """
+        Initializes the InsightLog by loading existing persistent insights from disk.
+        """
         self.entries = load_insights_from_disk()
 
     def add(self, structured_insight):
@@ -16,11 +18,23 @@ class InsightLog:
         print(f"[InsightLog] Logged structured insight: {structured_insight['text']}")
 
     def get_all(self):
+        """
+        Returns all logged insights.
+        """
         return self.entries
 
 def log_insight(model, text, topic=None, emotion=None, patterns=None, reasoning=None, timestamp=None):
     """
     Logs a structured insight into the model's InsightLog and appends to model.learned_insights.
+
+    Args:
+        model: The active BaseModel instance.
+        text (str): The insight text.
+        topic (str): Tagged topic (optional).
+        emotion (str): Inferred emotion (optional).
+        patterns (list): Recognized patterns (optional).
+        reasoning (list): Reasoning chain (optional).
+        timestamp (str): Timestamp override (optional).
     """
     structured_entry = {
         "text": text,
