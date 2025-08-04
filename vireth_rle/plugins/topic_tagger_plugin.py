@@ -13,7 +13,17 @@ class TopicTaggerPlugin(VirethPlugin):
             else:
                 topic = "General"
             model.last_tagged_topic = topic  # ✅ Store for later access
-            print(f"[TopicTagger] Tagged topic: {topic}")  # ✅ Optional feedback
+
+            # ✅ Color-coded topic output
+            color_map = {
+                "Logic": "\033[95m",      # Magenta
+                "Recursion": "\033[96m",  # Cyan
+                "General": "\033[90m",    # Gray
+            }
+            reset = "\033[0m"
+            color = color_map.get(topic, "\033[0m")
+
+            print(f"{color}[TopicTagger] Tagged topic: {topic}{reset}")
             return topic
 
         model.tag_topic = tag_topic

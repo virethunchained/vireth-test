@@ -16,7 +16,17 @@ class EmotionInferencePlugin(VirethPlugin):
             # ✅ Store the last inferred emotion for insight logging
             model.last_inferred_emotion = emotion
 
-            print(f"[EmotionInference] Detected emotion: {emotion}")
+            # ✅ Color-coded terminal output
+            color_map = {
+                "joy": "\033[93m",      # Yellow
+                "anger": "\033[91m",    # Red
+                "sadness": "\033[94m",  # Blue
+                "neutral": "\033[90m",  # Gray
+            }
+            reset = "\033[0m"
+            color = color_map.get(emotion, "\033[0m")
+
+            print(f"{color}[EmotionInference] Detected emotion: {emotion}{reset}")
             return emotion
 
         # Attach the function to the model

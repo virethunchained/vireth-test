@@ -11,10 +11,11 @@ class InsightExtractorPlugin(VirethPlugin):
             ]
             for insight in insights:
                 log_insight(model, insight)
+                print(f"\033[96m[InsightExtractor] Logged refined insight: {insight}\033[0m")
             return insights
 
         model.extract_insights = extract_insights
-        print(f"[Plugin] {self.name()} registered successfully.")
+        print(f"\033[96m[Plugin] {self.name()} registered successfully.\033[0m")
 
     def description(self):
         return "Extracts key insights from memory and logs them."

@@ -15,7 +15,12 @@ class PatternMapperPlugin(VirethPlugin):
                 if "clarify" in input_text:
                     patterns.append("clarification")
             detected = list(set(patterns))
-            print(f"[PatternMapper] Detected patterns: {detected}")
+
+            # ✅ Color-coded output
+            color = "\033[92m"  # Light green
+            reset = "\033[0m"
+            print(f"{color}[PatternMapper] Detected patterns: {detected}{reset}")
+
             return detected
 
         model.map_patterns = lambda: map_patterns(model.get_memory())
