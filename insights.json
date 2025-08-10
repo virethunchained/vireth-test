@@ -3667,5 +3667,533 @@
       "Improves code quality"
     ],
     "timestamp": "2025-08-10T00:39:04.580079"
+  },
+  {
+    "text": "[Refined] Processed input: I'm frustrated with how people keep ignoring symbolic logic. It\u2019s foundational to reasoning.",
+    "topic": "Logic",
+    "emotion": "anger",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.727924"
+  },
+  {
+    "text": "[Refined] Processed input: Explain symbolic logic",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.754712"
+  },
+  {
+    "text": "[Refined] Processed input: Give an example of a logical operator",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.765389"
+  },
+  {
+    "text": "[Refined] Processed input: Clarify recursion with analogy",
+    "topic": "Recursion",
+    "emotion": "neutral",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.775609"
+  },
+  {
+    "text": "[Refined] Processed input: How do feedback loops influence logic?",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.787711"
+  },
+  {
+    "text": "[Refined] Processed input: Demonstrate adaptive reasoning",
+    "topic": "General",
+    "emotion": "neutral",
+    "patterns": [
+      "example-driven",
+      "clarification"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T00:39:04.802078"
+  },
+  {
+    "text": "[Refined] Processed input: I'm frustrated with how people keep ignoring symbolic logic. It\u2019s foundational to reasoning.",
+    "topic": "Logic",
+    "emotion": "anger",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.477953"
+  },
+  {
+    "text": "[Refined] Processed input: Explain symbolic logic",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.500390"
+  },
+  {
+    "text": "[Refined] Processed input: Give an example of a logical operator",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.507244"
+  },
+  {
+    "text": "[Refined] Processed input: Clarify recursion with analogy",
+    "topic": "Recursion",
+    "emotion": "neutral",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.513089"
+  },
+  {
+    "text": "[Refined] Processed input: How do feedback loops influence logic?",
+    "topic": "Logic",
+    "emotion": "neutral",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.519101"
+  },
+  {
+    "text": "[Refined] Processed input: Demonstrate adaptive reasoning",
+    "topic": "General",
+    "emotion": "neutral",
+    "patterns": [
+      "clarification",
+      "example-driven"
+    ],
+    "reasoning": [
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      },
+      {
+        "step": "analyze",
+        "detail": "Interpreting input"
+      },
+      {
+        "step": "reflect",
+        "detail": "Evaluating prior outputs"
+      },
+      {
+        "step": "iterate",
+        "detail": "Refining based on context"
+      }
+    ],
+    "timestamp": "2025-08-10T01:37:51.525110"
   }
 ]

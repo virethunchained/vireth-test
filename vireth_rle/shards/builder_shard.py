@@ -4,6 +4,7 @@ import datetime
 from vireth_rle.utils.insight_utils import log_insight
 from vireth_rle.utils.file_utils import get_all_py_files_in_dir, read_file, write_file, create_snapshot
 from vireth_rle.utils.git_utils import commit_all_changes
+from vireth_rle.shards import analysis_rules  # Import our new rules module
 
 class BuilderShard:
     def __init__(self, model, root_dir="vireth_rle"):
@@ -11,7 +12,7 @@ class BuilderShard:
         self.root_dir = root_dir
         self.suggestions = []
         self.file_snapshots = {}
-        self.dry_run = False  # Set to True to enable dry run (no writes)
+        self.dry_run = False  # Set True to skip writes
 
     def run(self):
         print("[BuilderShard] Committing all current changes before running...")
@@ -31,37 +32,27 @@ class BuilderShard:
 
     def analyze_file(self, path):
         try:
-            # Read the file content
             source = read_file(path)
             if not source:
                 return
 
-            # Create a snapshot of the original file state
-            if path not in self.file_snapshots:
+            # Parse AST once
+            tree = ast.parse(source)
+
+            # Create snapshot only if not dry run
+            if not self.dry_run and path not in self.file_snapshots:
                 snapshot_path = create_snapshot(path, source)
                 self.file_snapshots[path] = snapshot_path
 
-            tree = ast.parse(source)
+            # Run all analysis rules and collect suggestions
+            rules_suggestions = analysis_rules.check_all(source, tree)
 
-            # Check for 'Refactor this section for better performance.' comments
-            if "Refactor this section for better performance." in source:
-                self.suggestions.append({
-                    "file": path,
-                    "suggestion": "Found Refactor this section for better performance. comment",
-                    "reasoning": ["Indicates unfinished implementation"]
-                })
+            # Add file path to each suggestion and append
+            for sug in rules_suggestions:
+                sug.setdefault("file", path)
+                self.suggestions.append(sug)
 
-            # Check for duplicate function names
-            func_names = [n.name for n in ast.walk(tree) if isinstance(n, ast.FunctionDef)]
-            duplicates = set([name for name in func_names if func_names.count(name) > 1])
-            for name in duplicates:
-                self.suggestions.append({
-                    "file": path,
-                    "suggestion": f"Duplicate function name: {name}",
-                    "reasoning": ["Could lead to overwrites or confusion"]
-                })
-
-            # Apply improvements (or dry run)
+            # Call apply_improvements (placeholder)
             self.apply_improvements(path, source)
 
         except Exception as e:
@@ -69,38 +60,31 @@ class BuilderShard:
 
     def apply_improvements(self, path, original_content):
         if self.dry_run:
-            # Dry run mode: don't write changes, just record what would be done
+            # Dry run: just note the would-be change
             self.suggestions.append({
                 "file": path,
-                "suggestion": "Would replace 'Refactor this section for better performance.' with refactor suggestion (dry run)",
-                "reasoning": ["Dry run - no changes made"]
+                "suggestion": "Dry run - no file changes applied",
+                "reasoning": ["Dry run mode active"]
             })
             return
 
-        # Actual replacement (currently trivial, can be expanded)
-        new_content = original_content.replace(
-            "Refactor this section for better performance.",
-            "Refactor this section for better performance."
-        )
-
-        # Write changes back to file
-        write_file(path, new_content)
-
-        # Log the improvement
-        self.suggestions.append({
-            "file": path,
-            "suggestion": "Replaced Refactor this section for better performance. with refactor suggestion",
-            "reasoning": ["Improves code quality"]
-        })
+        # Placeholder for future automatic refactor
+        # Currently no actual content changes done here
+        pass
 
     def log_suggestions(self):
         for item in self.suggestions:
+            text = f"[BuilderShard Suggestion]"
+            if "line" in item:
+                text += f" (line {item['line']})"
+            text += f" {item['suggestion']} in {item['file']}"
+
             log_insight(
                 self.model,
-                text=f"[BuilderShard Suggestion] {item['suggestion']} in {item['file']}",
+                text=text,
                 topic="BuilderShard",
                 emotion="neutral",
                 patterns=["refactor-suggestion"],
-                reasoning=item["reasoning"],
+                reasoning=item.get("reasoning", []),
                 timestamp=datetime.datetime.utcnow().isoformat()
             )
