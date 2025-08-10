@@ -45,7 +45,7 @@ class BuilderShard:
                 self.file_snapshots[path] = snapshot_path
 
             # Run all analysis rules and collect suggestions
-            rules_suggestions = analysis_rules.check_all(source, tree)
+            rules_suggestions = analysis_rules.check_all(source, path)  # FIXED: pass path, not tree
 
             # Add file path to each suggestion and append
             for sug in rules_suggestions:
