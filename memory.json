@@ -70,5 +70,29 @@
   {
     "input": "Demonstrate adaptive reasoning",
     "output": "[Refined] Processed input: Demonstrate adaptive reasoning"
+  },
+  {
+    "input": "I'm frustrated with how people keep ignoring symbolic logic. It\u2019s foundational to reasoning.",
+    "output": "[Refined] Processed input: I'm frustrated with how people keep ignoring symbolic logic. It\u2019s foundational to reasoning."
+  },
+  {
+    "input": "Explain symbolic logic",
+    "output": "[Refined] Processed input: Explain symbolic logic"
+  },
+  {
+    "input": "Give an example of a logical operator",
+    "output": "[Refined] Processed input: Give an example of a logical operator"
+  },
+  {
+    "input": "Clarify recursion with analogy",
+    "output": "[Refined] Processed input: Clarify recursion with analogy"
+  },
+  {
+    "input": "How do feedback loops influence logic?",
+    "output": "[Refined] Processed input: How do feedback loops influence logic?"
+  },
+  {
+    "input": "Demonstrate adaptive reasoning",
+    "output": "[Refined] Processed input: Demonstrate adaptive reasoning"
   }
 ]
