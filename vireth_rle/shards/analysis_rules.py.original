@@ -51,4 +51,51 @@ def check_all(source_code, path):
                     "reasoning": ["Long functions should be broken down"]
                 })
 
+    # Rule 4: Detect unused imports (simple heuristic)
+    imported_names = set()
+    used_names = set()
+    for node in ast.walk(tree):
+        if isinstance(node, ast.Import):
+            for alias in node.names:
+                imported_names.add(alias.asname or alias.name.split('.')[0])
+        elif isinstance(node, ast.ImportFrom):
+            for alias in node.names:
+                imported_names.add(alias.asname or alias.name)
+        elif isinstance(node, ast.Name):
+            used_names.add(node.id)
+    unused = imported_names - used_names
+    for name in unused:
+        suggestions.append({
+            "file": path,
+            "line": None,
+            "suggestion": f"Unused import '{name}'",
+            "reasoning": ["Removing unused imports cleans code and reduces clutter"]
+        })
+
+    # Rule 5: Simple cyclomatic complexity estimator (counts branches)
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            complexity = 1  # default for function entry
+            for subnode in ast.walk(node):
+                if isinstance(subnode, (ast.If, ast.For, ast.While, ast.And, ast.Or, ast.ExceptHandler)):
+                    complexity += 1
+            if complexity > 10:
+                suggestions.append({
+                    "file": path,
+                    "line": node.lineno,
+                    "suggestion": f"Function '{node.name}' is too complex (cyclomatic complexity ~{complexity})",
+                    "reasoning": ["High complexity functions are harder to maintain and test"]
+                })
+
+    # Rule 6: Functions missing docstrings
+    for node in ast.walk(tree):
+        if isinstance(node, ast.FunctionDef):
+            if not ast.get_docstring(node):
+                suggestions.append({
+                    "file": path,
+                    "line": node.lineno,
+                    "suggestion": f"Function '{node.name}' is missing a docstring",
+                    "reasoning": ["Docstrings improve code documentation and readability"]
+                })
+
     return suggestions
